@@ -1,0 +1,33 @@
+{
+        "coc.preferences.formatOnSaveFiletypes": [
+                "css",
+                "markdown",
+                "python",
+                "html",
+                "javascript",
+                "yaml",
+                "json",
+                "bash"
+        ],
+        // python configuration
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        // Language Servers configuration
+        "languageserver": {
+                "bash": {
+                        "command": "bash-language-server",
+                        "args": [
+                                "start"
+                        ],
+                        "filetypes": [
+                                "sh"
+                        ],
+                        "ignoredRootPaths": [
+                                "~"
+                        ]
+                }
+        },
+        "snippets.ultisnips.directories": [
+                "UltiSnips"
+        ]
+}
