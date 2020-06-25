@@ -6,12 +6,17 @@ call plug#begin(stdpath('data') . '/plugged')
         " Visual
         Plug 'karb94/vim-smoothie'
         Plug 'junegunn/fzf.vim'
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'preservim/nerdtree'
         Plug 'ntpeters/vim-better-whitespace'
+        Plug 'vim-pandoc/vim-pandoc'
+        Plug 'airblade/vim-gitgutter'
 
         "Syntax
         Plug 'preservim/nerdcommenter'
+        Plug 'vim-pandoc/vim-pandoc-syntax'
         Plug 'sheerun/vim-polyglot'
+        Plug 'junegunn/goyo.vim'
         Plug 'jiangmiao/auto-pairs'
         Plug 'editorconfig/editorconfig-vim'
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -30,6 +35,7 @@ syntax on 				    " Syntax highlight
 set nocompatible 			" Be Improved
 filetype plugin on          " Required (nerdcommenter)
 set number  		        " Line Number
+set spelllang=es            "Spell lang for spellcheck
 set noswapfile 				" Dont create a swap file
 set mouse=r                 " Allow copy and paste with mouse
 set clipboard=unnamedplus   " Use system clipboard
@@ -82,6 +88,9 @@ let g:strip_whitespace_on_save=1
 
 "==== CoC configuration ====================================================================
 source $HOME/.config/nvim/plug-config/coc.vim
+
+"==== Goyo connfiguration ==================================================================
+source $HOME/.config/nvim/plug-config/goyo.vim
 
 "==== Keybindings ==========================================================================
 map <C-s> :w<CR>
