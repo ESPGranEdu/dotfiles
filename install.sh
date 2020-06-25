@@ -20,6 +20,10 @@ for files in $(ls -d .[!.]* * | grep -Ev ".git|README.md|install.sh") ; do
         fi
 done
 
+# Symlink vim to nvim and install plugins
+grep -Eq "ubuntu|debian" || ln -svf /usr/bin/nvim /usr/bin/vim
+vim -c "PlugInstall | q | q"
+
 echo -e "\nDotfiles installed !!!"
 echo  "Execute \"source $HOME/.bashrc\" to reload the actual config"
 
