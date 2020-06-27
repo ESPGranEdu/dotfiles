@@ -7,7 +7,6 @@ call plug#begin(stdpath('data') . '/plugged')
         Plug 'karb94/vim-smoothie'
         Plug 'junegunn/fzf.vim'
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-        Plug 'preservim/nerdtree'
         Plug 'ntpeters/vim-better-whitespace'
         Plug 'vim-pandoc/vim-pandoc'
         Plug 'airblade/vim-gitgutter'
@@ -78,10 +77,6 @@ set statusline+=\ %l:%c/%L\ lines\         	" line + column
 set statusline+=%#Cursor#       			" colour
 set statusline+=\ %3p%%\                	" percentage
 
-"==== NERDTree Configuration ===============================================================
-"autocmd VimEnter * NERDTree " Open NERDTree when Nvim starts
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:nerdtree") && b:nerdtree.istabtree()) | q | endif " close nvim if the only window open is nerdtree
-
 "==== vim-better-whitespace Configuration ==================================================
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
@@ -104,5 +99,5 @@ nnoremap <leader><Down> :wincmd j<CR>
 nnoremap <leader>+ :vertical resize +2<CR>
 nnoremap <leader>- :vertical resize -2<CR>
 nnoremap <leader>f :Files<CR>
-nnoremap <leader>b :Buffers<CR>
+
 nnoremap <leader>l :Lines<CR>
