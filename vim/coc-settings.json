@@ -1,19 +1,20 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
-    "vim",
     "markdown",
     "python",
+    "vim",
     "html",
     "javascript",
     "yaml",
     "json",
-    "bash",
-    "typescript"
+    "shellscript",
+    "yml"
   ],
   // python configuration
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
+
   // Language Servers configuration
   "languageserver": {
     "bash": {
