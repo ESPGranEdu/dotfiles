@@ -26,7 +26,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 # Install VimPlug and CoC extensions
 vim -c "PlugInstall --sync | qa!"
-vim -c "CocInstall coc-json coc-python coc-prettier coc-html coc-css coc-emmet coc-vetur coc-yaml coc-tsserver coc-vimlsp coc-sh | qa!"
+vim -c "CocInstall -sync coc-json coc-python coc-prettier coc-html coc-css coc-emmet coc-vetur coc-yaml coc-tsserver coc-vimlsp coc-sh | qa!"
 
 echo -e "\nDotfiles installed !!!"
 echo  "Execute \"source $HOME/.bashrc\" to reload the actual config"
