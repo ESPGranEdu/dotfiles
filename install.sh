@@ -15,13 +15,13 @@ for files in $(ls -d .[!.]* * | grep -Ev ".git|README.md|install.sh") ; do
         if [[ -d "$files" ]]; then
             cp -r "$files" "$HOME/.config"
         else
-            cp "$files" "$HOME"
+            cp "$files" "$HOME/.$files"
         fi
 done
 
 # Copy .vimrc and download Vim Plug
-cp vim/init.vim $HOME/.vimrc
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+ln -sf $HOME/.config/vim/init.vim $HOME/.vimrc
+curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Install VimPlug and CoC extensions
@@ -30,5 +30,4 @@ vim -c "CocInstall -sync coc-json coc-python coc-prettier coc-html coc-css coc-e
 
 echo -e "\nDotfiles installed !!!"
 echo  "Execute \"source $HOME/.bashrc\" to reload the actual config"
-
 

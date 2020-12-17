@@ -1,5 +1,5 @@
 "==== Plugins ============================================================================
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/vim/plugged')
         " Themes
         Plug 'gruvbox-community/gruvbox'
         Plug 'sainnhe/sonokai'
@@ -110,10 +110,10 @@ let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
 
 "==== CoC configuration ====================================================================
-source $HOME/.vim/plug-config/coc.vim
+source $HOME/.config/vim/plug-config/coc.vim
 
 "==== Goyo connfiguration ==================================================================
-source $HOME/.vim/plug-config/goyo.vim
+source $HOME/.config/vim/plug-config/goyo.vim
 
 "==== Keybindings ==========================================================================
 map <C-s> :w<CR>
