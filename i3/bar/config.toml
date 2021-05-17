@@ -1,0 +1,70 @@
+# Bar Theming
+icons                        = "awesome"
+
+[theme]
+name                         = "slick"
+[theme.overrides]
+idle_bg                      = "#2b2d3a"
+idle_fg                      = "#e1e3e4"
+#separator                    = ""
+separator_bg                 = "#000000"
+separator_fg                 = "#000000"
+
+
+# CPU usage
+[[block]]
+block                        = "cpu"
+interval                     = 1
+format                       = "{utilization}% {frequency}Ghz"
+
+# Temperature (custom block)
+[[block]]
+block                        = "custom"
+interval                     = 2
+command                      = ''' cat /sys/class/thermal/thermal_zone0/temp | awk  '{ printf(" %.1f\n", $1/1000) }' '''
+
+# Disk Usage
+[[block]]
+block                        = "disk_space"
+path                         = "/"
+alias                        = "/"
+unit                         = "GB"
+format                       = " {used} {unit} / {available} {unit}"
+interval                     = 20
+warning                      = 20.0
+alert                        = 10.0
+
+# Memory Usage
+[[block]]
+block                        = "memory"
+display_type                 = "memory"
+format_mem                   = "{Mug} GB / {MTg} GB ({Mup}%)"
+
+# Network Info
+[[block]]
+block                        = "net"
+interval                     = 5
+format                       = "{ip}"
+
+# Battery Percentage
+[[block]]
+block                        = "battery"
+interval                     = 10
+format                       = "{percentage}%"
+device                       = "BAT1"
+
+# Volume Control
+[[block]]
+block                        = "sound"
+step_width                   = 3
+max_vol                      = 100
+on_click                     = "pavucontrol"
+
+# Clock
+[[block]]
+block                        = "time"
+interval                     = 60
+format                       = "%a %d/%m/%Y %R"
+locale                       = "es_ES"
+
+

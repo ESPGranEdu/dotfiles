@@ -7,13 +7,22 @@ export LS_COLORS
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-# Start GNOME with wayland on tty1
-if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
-	XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
-fi
+function dedicated() {
+        [[ "$(system76-power graphics)" != "nvidia" ]] &&
+                echo -e "\e[1mIntegrated graphics detected, switching to dedicated (requires reboot)...\e[0m" &&
+                system76-power graphics power on && system76-power graphics nvidia && \
+                        nvidia-modprobe && reboot
+        startx
+}
 
-# Start GNOME with X11 on tty2 (Nvidia)
-if [[ -z $DISPLAY && $(tty) == /dev/tty2 ]]; then
-	GDK_BACKEND=x11 exec startx
-fi
+function integrated() {
+        [[ "$(system76-power graphics)" == @("nvidia"|"compute") ]] &&
+                echo -e "\e[1mDetected graphics detected, switching to integrated (requires reboot)...\e[0m" &&
+                system76-power graphics integrated && reboot
+        if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
+                  MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM=wayland XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
+        fi
+}
 
+[[ "$(tty)" == "/dev/tty1" ]] &&  integrated
+[[ "$(tty)" == "/dev/tty2" ]] &&  dedicated
