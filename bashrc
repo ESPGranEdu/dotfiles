@@ -7,7 +7,8 @@
 
 #================Shell options===================================
 shopt -s extglob        # Enable extended Bash regex and expansions
-export PS1="\[$(tput bold)\][\[$(tput sgr0)\]\[\033[38;5;82m\]\u\[$(tput sgr0)\]\[\033[38;5;21m\]@\[$(tput sgr0)\]\[\033[38;5;44m\]\h\[$(tput sgr0)\] > \[$(tput sgr0)\]\[\033[38;5;33m\]\W\[$(tput sgr0)\]\[$(tput bold)\]]\[$(tput sgr0)\]\n\[$(tput sgr0)\]\[\033[38;5;11m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+eval "$(starship init bash)"
 
 #================Environment Variables===========================
 export EDITOR=vim
@@ -39,7 +40,9 @@ if grep -qi "arch" /etc/os-release; then
 
 
         update_mirrors() {
-                sudo reflector --verbose --score 100 --fastest 50 --sort rate --save /etc/pacman.d/mirrorlist
+                sudo reflector --verbose --country Spain --country France\
+                        --score 100 --fastest 50 \
+                        --sort rate --save /etc/pacman.d/mirrorlist
                 sudo pacman -Syy
         }
 fi

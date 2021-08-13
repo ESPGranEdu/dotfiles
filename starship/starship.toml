@@ -1,0 +1,21 @@
+# Evita imprimir una nueva línea al inicio del prompt
+add_newline = false
+
+# Reemplaza el símbolo "❯" por "➜" del prompt
+[character]       # El nombre del módulo que se está configurando es "character"
+success_symbol = "[➜](bold green)"     # El segmento "success_symbol" es reemplazado por "➜" con el color "bold green"
+error_symbol   = "[✗](bold red) "
+
+[username]
+style_user = "green bold"
+style_root = "red bold"
+format = "[$user]($style)@"
+show_always=true
+disabled = false
+[hostname]
+ssh_only = false
+format="[$hostname](bold cyan) ➜ "
+disabled = false
+# Desactiva el gestor de paquetes, ocultándolo por completo del prompt
+[package]
+disabled = true
