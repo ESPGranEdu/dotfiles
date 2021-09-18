@@ -7,15 +7,21 @@ success_symbol = "[➜](bold green)"     # El segmento "success_symbol" es reemp
 error_symbol   = "[✗](bold red) "
 
 [username]
-style_user = "green bold"
-style_root = "red bold"
+style_user = "bold green"
+style_root = "bold red"
 format = "[$user]($style)@"
-show_always=true
+show_always = true
 disabled = false
+
 [hostname]
 ssh_only = false
-format="[$hostname](bold cyan) ➜ "
+format ="[$hostname](bold cyan) ➜ "
 disabled = false
+
+[directory]
+style = "bold yellow"
+format = "[$path]($style) "
+
 # Desactiva el gestor de paquetes, ocultándolo por completo del prompt
 [package]
 disabled = true
