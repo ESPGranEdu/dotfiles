@@ -11,22 +11,16 @@ shopt -s extglob
 [[ ! -d "$HOME/.config" ]] && mkdir "$HOME/.config"
 
 # Copy files
-for files in $(ls -d .[!.]* * | grep -Ev ".git|README.md|install.sh") ; do
-        if [[ -d "$files" ]]; then
-            cp -r "$files" "$HOME/.config"
+for file $(ls -d .[!.]* * | grep -Ev ".git|README.md|install.sh") ; do
+        if [[ -d "$file" ]]; then
+            cp -r "$file" "$HOME/.config"
         else
-            cp "$files" "$HOME/.$files"
+            cp "$file" "$HOME/.$file"
         fi
 done
 
-# Copy .vimrc and download Vim Plug
-ln -sf $HOME/.config/vim/init.vim $HOME/.vimrc
-curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# Install VimPlug and CoC extensions
-vim -c "PlugInstall --sync | qa!"
-vim -c "CocInstall -sync coc-json coc-python coc-prettier coc-html coc-css coc-emmet coc-vetur coc-yaml coc-tsserver coc-vimlsp coc-sh | qa!"
+# Create NeoVim symlink
+ln -sf $(which nvim) /usr/bin/vim
 
 echo -e "\nDotfiles installed !!!"
 echo  "Execute \"source $HOME/.bashrc\" to reload the actual config"
