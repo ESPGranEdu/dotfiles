@@ -13,9 +13,6 @@ eval "$(starship init bash)"
 #================Environment Variables===========================
 export EDITOR=vim
 export TERM="xterm-256color"
-{ [[ "$XDG_DISPLAY_TYPE" == "wayland" ]] &&
-        export TERMINAL="terminator"; } ||
-        export TERMINAL="alacritty"
 
 #===============Extended behaviour===============================
 # Use fzf for completion and reverse search
@@ -31,7 +28,7 @@ command -v fzf &>/dev/null && {
 
 #================Functions=======================================
 if grep -qi "arch" /etc/os-release; then
-        clean_orphans() {
+        clean-orphans() {
                 orphans=($(pacman -Qqdt 2>/dev/null))
 
                 (( ${#orphans[@]} == 0 )) && return 0
@@ -39,7 +36,7 @@ if grep -qi "arch" /etc/os-release; then
         }
 
 
-        update_mirrors() {
+        update-mirrors() {
                 sudo reflector --verbose --country Spain --country France\
                         --score 100 --fastest 50 \
                         --sort rate --save /etc/pacman.d/mirrorlist
@@ -47,7 +44,7 @@ if grep -qi "arch" /etc/os-release; then
         }
 fi
 
-reload_config() {
+reload-config() {
         clear && source "$HOME/.bashrc"
 }
 

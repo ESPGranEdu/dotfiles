@@ -13,14 +13,14 @@ shopt -s extglob
 # Copy files
 for file $(ls -d .[!.]* * | grep -Ev ".git|README.md|install.sh") ; do
         if [[ -d "$file" ]]; then
-            cp -r "$file" "$HOME/.config"
+            cp -rv "$file" "$HOME/.config"
         else
-            cp "$file" "$HOME/.$file"
+            cp -v "$file" "$HOME/.$file"
         fi
 done
 
-# Create NeoVim symlink
-ln -sf $(which nvim) /usr/bin/vim
+# Create NeoVim symlink launched with sudo
+[[ $(id -u) == 0 ]] && ln -sf $(which nvim) /usr/bin/vim
 
 echo -e "\nDotfiles installed !!!"
 echo  "Execute \"source $HOME/.bashrc\" to reload the actual config"
