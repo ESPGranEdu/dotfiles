@@ -11,7 +11,7 @@ shopt -s extglob
 [[ ! -d "$HOME/.config" ]] && mkdir "$HOME/.config"
 
 # Copy files
-for file $(ls -d .[!.]* * | grep -Ev ".git|README.md|install.sh") ; do
+for file in $(ls -d .[!.]* * | grep -Ev ".git|README.md|install.sh") ; do
         if [[ -d "$file" ]]; then
             cp -rv "$file" "$HOME/.config"
         else
