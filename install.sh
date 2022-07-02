@@ -20,7 +20,7 @@ for file in $(ls -d .[!.]* * | grep -Ev ".git|README.md|install.sh") ; do
 done
 
 # Create NeoVim symlink if launched with sudo
-if [[ $(id -u) == 0 ]] && command -v nvim &>/dev/null then; 
+if [[ $(id -u) == 0 ]] && command -v nvim &>/dev/null; then 
 	local nvim_path=$(which nvim)
 
 	ln -sf "$nvim_path" /usr/bin/vim
