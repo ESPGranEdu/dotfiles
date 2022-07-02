@@ -8,11 +8,11 @@
 #================Shell options===================================
 shopt -s extglob        # Enable extended Bash regex and expansions
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export XDG_CONFIG_HOME="$HOME/.config"
 eval "$(starship init bash)"
 
 #================Environment Variables===========================
 export EDITOR=vim
-export TERM="xterm-256color"
 
 #===============Extended behaviour===============================
 # Use fzf for completion and reverse search
