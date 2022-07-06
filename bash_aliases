@@ -15,8 +15,8 @@ if grep -qi "arch" /etc/os-release; then
 
     if [[ "$aur_wrapper" ]]; then
         alias $aur_wrapper="$aur_wrapper --noconfirm"
-        alias update="$aur_wrapper -Syu && clean_orphans"
-        alias pf='update && clean_orphans && shutdown now'
+        alias update="$aur_wrapper -Syu && clean-orphans"
+        alias pf='update && clean-orphans && shutdown now'
     fi
 fi
 
